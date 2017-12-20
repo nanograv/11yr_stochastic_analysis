@@ -71,7 +71,7 @@ RUN pip install jupyter_contrib_nbextensions && \
     jupyter contrib nbextension install --user
 
 # Jupyter notebook access script
-COPY run_jupyter.sh /home/nanograv/bin
+COPY run_jupyter.sh /home/nanograv/.local/bin
 
 # non-standard-Anaconda packages
 RUN pip install healpy acor line_profiler jplephem corner numdifftools
