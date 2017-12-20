@@ -50,7 +50,7 @@ RUN wget -q https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.s
     bash Miniconda3-latest-Linux-x86_64.sh -b -p /home/nanograv/.local/miniconda && \
     rm Miniconda3-latest-Linux-x86_64.sh
 
-ENV PATH="/home/nanograv/.local/miniconda/bin:/home/nanograv/bin:${PATH}"
+ENV PATH="/home/nanograv/.local/miniconda/bin:/home/nanograv/.local/bin:${PATH}"
 
 # install basic Python packages
 RUN conda install -y numpy cython scipy && \
@@ -69,9 +69,6 @@ ENV MKL_NUM_THREADS=4
 # Jupyter notebook extensions
 RUN pip install jupyter_contrib_nbextensions && \
     jupyter contrib nbextension install --user
-
-# Jupyter notebook access script
-COPY run_jupyter.sh /home/nanograv/.local/bin
 
 # non-standard-Anaconda packages
 RUN pip install healpy acor line_profiler jplephem corner numdifftools
@@ -104,3 +101,6 @@ COPY matplotlibrc /home/nanograv/.config/matplotlib
 RUN wget -q https://data.nanograv.org/static/data/NANOGrav_11y_20171023.tgz && \
     tar -xzf NANOGrav_11y_20171023.tgz && \
     rm NANOGrav_11y_20171023.tgz
+
+# default entry command:
+CMD jupyter notebook --no-browser --port 8888 --ip=0.0.0.0
