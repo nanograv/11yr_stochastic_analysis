@@ -99,10 +99,10 @@ RUN pip install git+https://github.com/nanograv/enterprise@04607ef
 RUN mkdir -p /home/nanograv/.config/matplotlib
 COPY matplotlibrc /home/nanograv/.config/matplotlib
 
-# get NANOGrav 11yr data release
-RUN wget -q https://data.nanograv.org/static/data/NANOGrav_11y_20171023.tgz && \
-    tar -xzf NANOGrav_11y_20171023.tgz && \
-    rm NANOGrav_11y_20171023.tgz
+# copy in NANOGrav 11yr data
+RUN mkdir -p nano11y_data/partim nano11y_data/noisefiles
+COPY data/partim/* nano11y_data/partim/
+COPY data/noisefiles/* nano11y_data/noisefiles/
 
 # default entry command:
 CMD jupyter notebook --no-browser --port 8888 --ip=0.0.0.0
