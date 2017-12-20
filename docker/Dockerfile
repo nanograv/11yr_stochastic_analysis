@@ -3,9 +3,10 @@ WORKDIR /root/install
 
 RUN useradd -ms /bin/bash nanograv
 
-# install LAPACK
+# install LAPACK & SuiteSparse
 RUN apt-get -y update && \
     apt-get -y install liblapack3 && \
+    apt-get -y install libsuitesparse-dev && \
     apt-get clean
 
 # install a few other basic tools
@@ -13,7 +14,6 @@ RUN apt-get -y install less gawk vim && \
     apt-get clean
 
 # make calceph
-#RUN wget -q http://www.imcce.fr/fr/presentation/equipes/ASD/inpop/calceph/calceph-2.3.2.tar.gz && \
 RUN wget -q https://www.imcce.fr/content/medias/recherche/equipes/asd/calceph/calceph-2.3.2.tar.gz && \
     tar zxvf calceph-2.3.2.tar.gz && \
     cd calceph-2.3.2 && \
@@ -80,11 +80,8 @@ COPY run_jupyter.sh /home/nanograv/bin
 # non-standard-Anaconda packages
 RUN pip install healpy acor line_profiler jplephem corner numdifftools
 
-# install scikit-sparse last (in case it messes with MKL, but it may be possible to move it earlier)
-# menpo uses v3 of SuiteSparse, consider building from source in future
-# http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-5.1.0.tar.gz
-RUN conda install -y -c menpo scikit-sparse && \
-    conda clean -a
+#install scikit-sparse (use apt-get for SuiteSparse)
+RUN pip install scikit-sparse
 
 # install PTMCMCSampler
 RUN git clone https://github.com/jellis18/PTMCMCSampler && \
