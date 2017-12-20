@@ -1,4 +1,4 @@
-# 11yr_stochastic_analysis
+# 11yr Stochastic Analysis
 
 * Pull the latest docker image:
 ```
@@ -11,7 +11,8 @@ This will ensure that any data products are persistent, even if you delete the d
 ```
 docker run -it -p 8888:8888 \
  -v /path/to/local/dir/:/home/nanograv/local_data/ \
- -u nanograv nanograv/nano11y-gwb run_jupyter.sh
+ -u nanograv nanograv/nano11y-gwb
 ```
+the default action for `docker run` will launch a jupyter notebook in the container home directory.
 
 * Copy and paste the output URL into your browser.
