@@ -1,0 +1,16 @@
+{
+    "J1643-1224_Rcvr1_2_GASP_efac": 1.02118,
+    "J1643-1224_Rcvr1_2_GASP_log10_ecorr": -8.06323,
+    "J1643-1224_Rcvr1_2_GASP_log10_equad": -6.40365,
+    "J1643-1224_Rcvr1_2_GUPPI_efac": 1.2372,
+    "J1643-1224_Rcvr1_2_GUPPI_log10_ecorr": -6.08941,
+    "J1643-1224_Rcvr1_2_GUPPI_log10_equad": -6.56466,
+    "J1643-1224_Rcvr_800_GASP_efac": 1.5523,
+    "J1643-1224_Rcvr_800_GASP_log10_ecorr": -6.21744,
+    "J1643-1224_Rcvr_800_GASP_log10_equad": -5.99664,
+    "J1643-1224_Rcvr_800_GUPPI_efac": 1.38344,
+    "J1643-1224_Rcvr_800_GUPPI_log10_ecorr": -5.50753,
+    "J1643-1224_Rcvr_800_GUPPI_log10_equad": -6.03597,
+    "J1643-1224_gamma": 1.32361,
+    "J1643-1224_log10_A": -12.245
+}

@@ -1,0 +1,16 @@
+{
+    "J2010-1323_Rcvr1_2_GASP_efac": 1.02481,
+    "J2010-1323_Rcvr1_2_GASP_log10_ecorr": -6.10585,
+    "J2010-1323_Rcvr1_2_GASP_log10_equad": -6.00887,
+    "J2010-1323_Rcvr1_2_GUPPI_efac": 1.17938,
+    "J2010-1323_Rcvr1_2_GUPPI_log10_ecorr": -6.88707,
+    "J2010-1323_Rcvr1_2_GUPPI_log10_equad": -9.07445,
+    "J2010-1323_Rcvr_800_GASP_efac": 1.05483,
+    "J2010-1323_Rcvr_800_GASP_log10_ecorr": -7.23339,
+    "J2010-1323_Rcvr_800_GASP_log10_equad": -9.62523,
+    "J2010-1323_Rcvr_800_GUPPI_efac": 1.02818,
+    "J2010-1323_Rcvr_800_GUPPI_log10_ecorr": -8.06179,
+    "J2010-1323_Rcvr_800_GUPPI_log10_equad": -9.07558,
+    "J2010-1323_gamma": 0.267226,
+    "J2010-1323_log10_A": -19.9297
+}
