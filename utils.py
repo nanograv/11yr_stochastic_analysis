@@ -5,7 +5,7 @@ import json
 
 from enterprise.pulsar import Pulsar
 
-DATADIR = 'data/'
+DATADIR = 'nano11y_data/'
 
 def get_pulsars(psrlist=None, ephem='DE436'):
     """
