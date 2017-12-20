@@ -34,7 +34,10 @@ RUN git clone https://bitbucket.org/psrsoft/tempo2 && \
     ./configure --prefix=/home/nanograv/.local --with-calceph=/usr/local && \
     make && make install && \
     mkdir -p /home/nanograv/.local/share/tempo2 && \
-    cp -Rp T2runtime/* /home/nanograv/.local/share/tempo2/.
+    cp -Rp T2runtime/* /home/nanograv/.local/share/tempo2/. && \
+    cd .. && rm -rf tempo2
+
+ENV TEMPO2=/home/nanograv/.local/share/tempo2
 
 # get extra ephemeris
 RUN cd /home/nanograv/.local/share/tempo2/ephemeris && \
@@ -42,8 +45,6 @@ RUN cd /home/nanograv/.local/share/tempo2/ephemeris && \
     wget -q ftp://ssd.jpl.nasa.gov/pub/eph/planets/bsp/de436t.bsp && \
     wget -q https://github.com/nanograv/tempo/raw/master/ephem/DE435.1950.2050 && \
     wget -q https://github.com/nanograv/tempo/raw/master/ephem/DE436.1950.2050
-
-ENV TEMPO2=/home/nanograv/.local/share/tempo2
 
 # install miniconda
 RUN wget -q https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
