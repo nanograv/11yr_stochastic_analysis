@@ -13,7 +13,8 @@ RUN apt-get -y install less gawk vim && \
     apt-get clean
 
 # make calceph
-RUN wget -q http://www.imcce.fr/fr/presentation/equipes/ASD/inpop/calceph/calceph-2.3.2.tar.gz && \
+#RUN wget -q http://www.imcce.fr/fr/presentation/equipes/ASD/inpop/calceph/calceph-2.3.2.tar.gz && \
+RUN wget -q https://www.imcce.fr/content/medias/recherche/equipes/asd/calceph/calceph-2.3.2.tar.gz && \
     tar zxvf calceph-2.3.2.tar.gz && \
     cd calceph-2.3.2 && \
     ./configure --prefix=/usr/local && \
