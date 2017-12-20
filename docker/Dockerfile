@@ -76,6 +76,17 @@ COPY run_jupyter.sh /home/nanograv/bin
 # non-standard-Anaconda packages
 RUN pip install healpy acor line_profiler jplephem corner numdifftools
 
+# can't find proper way to link MKL '-lmkl_rt' works on local Mac...
+# manually build SuiteSparse against Intel MKL
+#RUN wget -q http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-5.1.0.tar.gz && \
+#    tar -xzf SuiteSparse-5.1.0.tar.gz
+# && \
+#RUN cd SuiteSparse && \
+#    make library INSTALL=/usr/local \
+#      BLAS="-L/home/nanograv/.local/miniconda/lib -lmkl_rt" \
+#      LAPACK="-L/home/nanograv/.local/miniconda/lib -lmkl_rt" && \
+#    cd .. && rm -rf SuiteSparse/ SuiteSparse-5.1.0.tar.gz
+
 #install scikit-sparse (use apt-get for SuiteSparse)
 RUN pip install scikit-sparse
 
