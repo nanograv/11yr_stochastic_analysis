@@ -84,15 +84,10 @@ RUN pip install healpy acor line_profiler jplephem corner numdifftools
 RUN pip install scikit-sparse
 
 # install PTMCMCSampler
-RUN git clone https://github.com/jellis18/PTMCMCSampler && \
-    cd PTMCMCSampler && \
-    python setup.py install
+RUN pip install git+https://github.com/jellis18/PTMCMCSampler@master
 
 # install enterprise (11 Dec 2017)
-RUN git clone https://github.com/nanograv/enterprise && \
-    cd enterprise && \
-    git reset --hard 04607ef && \
-    python setup.py install
+RUN pip install git+https://github.com/nanograv/enterprise@04607ef
 
 # matplotlib rc (default backend: Agg)
 RUN mkdir -p /home/nanograv/.config/matplotlib
