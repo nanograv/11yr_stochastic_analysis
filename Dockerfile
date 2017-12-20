@@ -21,9 +21,22 @@ RUN wget -q https://www.imcce.fr/content/medias/recherche/equipes/asd/calceph/ca
     make && make install && \
     cd .. && rm -rf calceph-2.3.2 calceph-2.3.2.tar.gz
 
+WORKDIR /home/nanograv
+
+# copy in NANOGrav 11yr data
+# (data is owned by root and cannot be modified!)
+RUN mkdir -p nano11y_data/partim nano11y_data/noisefiles
+COPY nano11y_data/partim/* nano11y_data/partim/
+COPY nano11y_data/noisefiles/* nano11y_data/noisefiles/
+
+# copy in analysis code
+RUN mkdir models/
+COPY models/* models/
+COPY utils.py psrlist.txt /home/nanograv/
+RUN chown nanograv:nanograv models/* utils.py
+
 USER nanograv
 RUN mkdir /home/nanograv/.local
-WORKDIR /home/nanograv
 
 ENV LD_LIBRARY_PATH="/usr/local/lib"
 
@@ -98,12 +111,6 @@ RUN pip install git+https://github.com/nanograv/enterprise@04607ef
 # matplotlib rc (default backend: Agg)
 RUN mkdir -p /home/nanograv/.config/matplotlib
 COPY matplotlibrc /home/nanograv/.config/matplotlib
-
-# copy in NANOGrav 11yr data
-# (data is owned by root and cannot be modified!)
-RUN mkdir -p nano11y_data/partim nano11y_data/noisefiles
-COPY nano11y_data/partim/* nano11y_data/partim/
-COPY nano11y_data/noisefiles/* nano11y_data/noisefiles/
 
 # default entry command:
 CMD jupyter notebook --no-browser --port 8888 --ip=0.0.0.0
