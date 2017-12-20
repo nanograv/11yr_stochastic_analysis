@@ -108,4 +108,3 @@ WORKDIR /home/nanograv/
 RUN wget -q https://data.nanograv.org/static/data/NANOGrav_11y_20171023.tgz && \
     tar -xzf NANOGrav_11y_20171023.tgz && \
     rm NANOGrav_11y_20171023.tgz
-
