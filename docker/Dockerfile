@@ -72,7 +72,7 @@ RUN pip install jupyter_contrib_nbextensions && \
     jupyter contrib nbextension install --user
 
 # non-standard-Anaconda packages
-RUN pip install healpy acor line_profiler jplephem corner numdifftools
+RUN pip install healpy line_profiler jplephem corner numdifftools
 
 # can't find proper way to link MKL '-lmkl_rt' works on local Mac...
 # manually build SuiteSparse against Intel MKL
@@ -88,7 +88,8 @@ RUN pip install healpy acor line_profiler jplephem corner numdifftools
 #install scikit-sparse (use apt-get for SuiteSparse)
 RUN pip install scikit-sparse
 
-# install PTMCMCSampler
+# install PTMCMCSampler (and py3 compatible acor)
+RUN pip install git+https://github.com/dfm/acor.git@master
 RUN pip install git+https://github.com/jellis18/PTMCMCSampler@master
 
 # install enterprise (11 Dec 2017)
