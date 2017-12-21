@@ -35,9 +35,9 @@ COPY models/* models/
 COPY utils.py psrlist.txt /home/nanograv/
 RUN chown nanograv:nanograv models/* utils.py
 
-# tmp notebook
-COPY test.ipynb /home/nanograv/
-RUN chown nanograv:nanograv test.ipynb
+# analysis notebook
+COPY analysis.ipynb /home/nanograv/
+RUN chown nanograv:nanograv analysis.ipynb
 
 
 USER nanograv
