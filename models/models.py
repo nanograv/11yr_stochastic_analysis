@@ -161,7 +161,7 @@ def common_red_noise_block(psd='powerlaw', prior='log-uniform',
 
         gam_name = 'gamma_{}'.format(name)
         if gamma_val is not None:
-            gamma_gw = parameter.Constant(gamma_val)
+            gamma_gw = parameter.Constant(gamma_val)(gam_name)
         else:
             gamma_gw = parameter.Uniform(0, 7)(gam_name)
 
