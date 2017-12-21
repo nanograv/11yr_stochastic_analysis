@@ -8,7 +8,7 @@ from enterprise.pulsar import Pulsar
 from PTMCMCSampler.PTMCMCSampler import PTSampler as ptmcmc
 
 
-DATADIR = 'data/'
+DATADIR = 'nano11y_data/'
 
 def get_pulsars(psrlist=None, ephem='DE436'):
     """
