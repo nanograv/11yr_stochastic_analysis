@@ -3,10 +3,9 @@ WORKDIR /root/install
 
 RUN useradd -ms /bin/bash nanograv
 
-# install LAPACK & SuiteSparse
+# install cmake 
 RUN apt-get -y update && \
-    apt-get -y install liblapack3 && \
-    apt-get -y install libsuitesparse-dev && \
+    apt-get -y install cmake && \
     apt-get clean
 
 # install a few other basic tools
@@ -94,17 +93,17 @@ RUN pip install healpy line_profiler jplephem corner numdifftools
 
 # can't find proper way to link MKL '-lmkl_rt' works on local Mac...
 # manually build SuiteSparse against Intel MKL
-#RUN wget -q http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-5.1.0.tar.gz && \
-#    tar -xzf SuiteSparse-5.1.0.tar.gz
-# && \
-#RUN cd SuiteSparse && \
-#    make library INSTALL=/usr/local \
-#      BLAS="-L/home/nanograv/.local/miniconda/lib -lmkl_rt" \
-#      LAPACK="-L/home/nanograv/.local/miniconda/lib -lmkl_rt" && \
-#    cd .. && rm -rf SuiteSparse/ SuiteSparse-5.1.0.tar.gz
-
+USER root
+RUN wget -q http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-5.1.0.tar.gz && \
+    tar -xzf SuiteSparse-5.1.0.tar.gz
+RUN cd SuiteSparse && \
+    make install INSTALL=/usr/local \
+      BLAS="-L/home/nanograv/.local/miniconda/lib -lmkl_rt" \
+      LAPACK="-L/home/nanograv/.local/miniconda/lib -lmkl_rt" && \
+    cd .. && rm -rf SuiteSparse/ SuiteSparse-5.1.0.tar.gz
+USER nanograv
 #install scikit-sparse (use apt-get for SuiteSparse)
-RUN pip install scikit-sparse
+RUN pip install --global-option=build_ext --global-option="-L/usr/local/lib" scikit-sparse
 
 # install PTMCMCSampler (and py3 compatible acor)
 RUN pip install git+https://github.com/dfm/acor.git@master
