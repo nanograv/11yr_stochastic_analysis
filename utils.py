@@ -1,4 +1,5 @@
-from __future__ import division, print_function
+from __future__ import (absolute_import, division,
+                        print_function, unicode_literals)
 import numpy as np
 import matplotlib.pyplot as plt
 from glob import glob
@@ -20,7 +21,7 @@ def get_pulsars(psrlist=None, ephem='DE436'):
     in the 11-year dataset (DE436)
     """
     if psrlist is None:
-        psrlist = np.loadtxt('psrlist.txt', dtype='S32')
+        psrlist = np.loadtxt('psrlist.txt', dtype=np.unicode_)
 
     parfiles = sorted(glob(DATADIR+'/partim/*.par'))
     timfiles = sorted(glob(DATADIR+'/partim/*.tim'))
@@ -43,7 +44,7 @@ def get_noise_dict(psrlist=None):
     """
 
     if psrlist is None:
-        psrlist = np.loadtxt('psrlist.txt', dtype='S32')
+        psrlist = np.loadtxt('psrlist.txt', dtype=np.unicode_)
 
     params = {}
     for p in psrlist:
@@ -190,7 +191,7 @@ def get_global_parameters(pta):
     for sc in pta._signalcollections:
         pars.extend(sc.param_names)
 
-    gpars = np.unique(filter(lambda x: pars.count(x)>1, pars))
+    gpars = np.unique(list(filter(lambda x: pars.count(x)>1, pars)))
     ipars = np.array([p for p in pars if p not in gpars])
 
     return gpars, ipars
@@ -247,8 +248,10 @@ def setup_sampler(pta, outdir='chains', resume=False):
 
     sampler = ptmcmc(ndim, pta.get_lnlikelihood, pta.get_lnprior, cov, groups=groups,
                      outDir=outdir, resume=resume)
-    np.savetxt(outdir+'/pars.txt', map(str, pta.param_names), fmt='%s')
-    np.savetxt(outdir+'/priors.txt', map(lambda x: str(x.__repr__()), pta.params), fmt='%s')
+    np.savetxt(outdir+'/pars.txt', 
+               list(map(str, pta.param_names)), fmt='%s')
+    np.savetxt(outdir+'/priors.txt',
+               list(map(lambda x: str(x.__repr__()), pta.params)), fmt='%s')
 
     # additional jump proposals
     jp = JumpProposal(pta)
