@@ -3,10 +3,9 @@ WORKDIR /root/install
 
 RUN useradd -ms /bin/bash nanograv
 
-# install LAPACK & SuiteSparse
+# install cmake 
 RUN apt-get -y update && \
-    apt-get -y install liblapack3 && \
-    apt-get -y install libsuitesparse-dev && \
+    apt-get -y install cmake && \
     apt-get clean
 
 # install a few other basic tools
@@ -35,9 +34,9 @@ COPY models/* models/
 COPY utils.py psrlist.txt /home/nanograv/
 RUN chown nanograv:nanograv models/* utils.py
 
-# tmp notebook
-COPY test.ipynb /home/nanograv/
-RUN chown nanograv:nanograv test.ipynb
+# analysis notebook
+COPY analysis.ipynb /home/nanograv/
+RUN chown nanograv:nanograv analysis.ipynb
 
 
 USER nanograv
@@ -76,7 +75,7 @@ RUN conda install -y numpy cython scipy && \
     conda clean -a
 
 # install libstempo (before other Anaconda packages, esp. matplotlib, so there's no libgcc confusion)
-# get 2.3.3, specifically at 25 Aug 2017 (git sha 9cb7552); run git pull to update to latest
+# get 2.3.3, specifically at 25 Aug 2017 (git sha 9cb7552)
 RUN pip install --install-option="--with-tempo2=/home/nanograv/.local" git+https://github.com/vallis/libstempo@9cb7552
 
 # install more Python packages
@@ -92,19 +91,18 @@ RUN pip install jupyter_contrib_nbextensions && \
 # non-standard-Anaconda packages
 RUN pip install healpy line_profiler jplephem corner numdifftools
 
-# can't find proper way to link MKL '-lmkl_rt' works on local Mac...
 # manually build SuiteSparse against Intel MKL
-#RUN wget -q http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-5.1.0.tar.gz && \
-#    tar -xzf SuiteSparse-5.1.0.tar.gz
-# && \
-#RUN cd SuiteSparse && \
-#    make library INSTALL=/usr/local \
-#      BLAS="-L/home/nanograv/.local/miniconda/lib -lmkl_rt" \
-#      LAPACK="-L/home/nanograv/.local/miniconda/lib -lmkl_rt" && \
-#    cd .. && rm -rf SuiteSparse/ SuiteSparse-5.1.0.tar.gz
-
-#install scikit-sparse (use apt-get for SuiteSparse)
-RUN pip install scikit-sparse
+USER root
+RUN wget -q http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-5.1.0.tar.gz && \
+    tar -xzf SuiteSparse-5.1.0.tar.gz && \
+    cd SuiteSparse && \
+    make install INSTALL=/usr/local \
+      BLAS="-L/home/nanograv/.local/miniconda/lib -lmkl_rt" \
+      LAPACK="-L/home/nanograv/.local/miniconda/lib -lmkl_rt" && \
+    cd .. && rm -rf SuiteSparse/ SuiteSparse-5.1.0.tar.gz
+USER nanograv
+# install scikit-sparse
+RUN pip install --global-option=build_ext --global-option="-L/usr/local/lib" scikit-sparse
 
 # install PTMCMCSampler (and py3 compatible acor)
 RUN pip install git+https://github.com/dfm/acor.git@master
