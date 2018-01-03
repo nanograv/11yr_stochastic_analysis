@@ -1,4 +1,12 @@
 theme: jekyll-theme-cayman
-title: The NANOGrav 11-year Data Set
-Pulsar-timing Constraints On The Stochastic Gravitational-wave Background
+
+email: srtaylor@caltech.edu
+
+title: The NANOGrav 11-year Data Set - Pulsar-timing Constraints On The Stochastic Gravitational-wave Background
+
 description: A companion website describing the results of our gravitational-wave searches, and how to replicate our analysis.
+
+baseurl: "/11yr_stochastic_analysis"
+url: "https://nanograv.github.io"
+twitter_username: NANOGrav
+github_username:  nanograv
