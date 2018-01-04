@@ -244,7 +244,8 @@
 															orbital properties, and the correlated influence of
 															Uranus and Neptune's uncertainties on Jupiter. These
 															make it hard to compute the center of the Solar-System
-															to the precision and accuracy needed for GW detection.
+															to the precision and accuracy needed for pulsar-timing
+															GW detection.
 														</h4>
 													</li>
 
@@ -274,17 +275,28 @@
 
 													<ul>
 														<li>
-															<h4>
+															<h4>Our modeling scheme begins with a baseline estimate
+																of the SSE. We typically adopt one of the recent
+																models released by the Jet Propulsion Laboratory, but
+																by construction this does not matter.
 															</h4>
 														</li>
 
 														<li>
-															<h4>
+															<h4>We then construct an 11-parameter model that perturbs
+																the position of the Solar-System barycenter (SSB). This
+																corresponds to a drift-rate of the Earth's orbit about the
+																ecliptic z-axis, mass perturbations to the gas giants,
+																and linear corrections to Jupiter's orbital elements
+																(e.g. eccentricity, semi-major axis, etc.)
 															</h4>
 														</li>
 
 														<li>
-															<h4>
+															<h4>The parameters of this model are searched for
+																simultaneosuly with all GW, pulsar timing-model,
+																and pulsar-noise parameters. We recover Bayesian
+																probability distributions for the SSE parameter corrections.
 															</h4>
 														</li>
 
