@@ -56,5 +56,5 @@ jupyter notebook
 [6]: http://stevertaylor.github.io/NX01/
 [7]: https://enterprise.readthedocs.io/en/latest/
 [8]: http://www.docker.com/
-[9]: https://github.com/nanograv/11yr_stochastic_analysis
+[9]: https://nanograv.github.io/11yr_stochastic_analysis
 
