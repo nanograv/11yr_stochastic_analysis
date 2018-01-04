@@ -1,6 +1,6 @@
 # 11yr Stochastic Analysis
 
-This repo provides data and software to reproduce results from the [NANOGrav][1] [11 year stochastic background analysis paper][2].
+This repo provides data and software to reproduce results from the [NANOGrav][1]'s 11 year stochastic background analysis paper (see [paper][2], [dedicated webpage][9]).
 The data is a subset of the full 11 year data release available at [data.nanograv.org][3].
 NANOGrav primarily uses Python for data analysis, and this repo makes use of a [Jupyter][4] notebook.
 
@@ -56,4 +56,5 @@ jupyter notebook
 [6]: http://stevertaylor.github.io/NX01/
 [7]: https://enterprise.readthedocs.io/en/latest/
 [8]: http://www.docker.com/
+[9]: https://github.com/nanograv/11yr_stochastic_analysis
 
