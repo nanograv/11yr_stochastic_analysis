@@ -1,17 +1,26 @@
 from __future__ import (absolute_import, division,
-                        print_function, unicode_literals)
+                        print_function)
 import numpy as np
 import matplotlib.pyplot as plt
 from glob import glob
 import json
+import os
+import hashlib
+
+try:
+    import cPickle as pickle
+except:
+    import pickle
 
 from enterprise.pulsar import Pulsar
 from PTMCMCSampler.PTMCMCSampler import PTSampler as ptmcmc
 
 
 DATADIR = 'nano11y_data/'
+CACHEDIR = '.data_cache/'
+os.system('mkdir -p {}'.format(CACHEDIR))
 
-def get_pulsars(psrlist=None, ephem='DE436'):
+def get_pulsars(psrlist=None, ephem='DE436', use_cache=True):
     """
     Reads in list of pulsar names and ephemeris version
     and returns list of instantiated enterprise Pulsar objects.
@@ -26,11 +35,26 @@ def get_pulsars(psrlist=None, ephem='DE436'):
     parfiles = sorted(glob(DATADIR+'/partim/*.par'))
     timfiles = sorted(glob(DATADIR+'/partim/*.tim'))
 
-    psrs = []
-    for par, tim in zip(parfiles, timfiles):
-        pname = par.split('/')[-1].split('_')[0]
-        if pname in psrlist:
-            psrs.append(Pulsar(par, tim, ephem=ephem))
+    # create pulsar hash
+    psr_str = ''.join(sorted(psrlist)) + ephem
+    psr_hash = hashlib.sha1(psr_str.encode()).hexdigest()
+
+    # check for cached file
+    cached_file = CACHEDIR + psr_hash
+    if os.path.exists(cached_file) and use_cache:
+        print('Reading pulsars from cached file.\n')
+        with open(cached_file, 'rb') as fin:
+            psrs = pickle.load(fin)
+    else:
+        psrs = []
+        for par, tim in zip(parfiles, timfiles):
+            pname = par.split('/')[-1].split('_')[0]
+            if pname in psrlist:
+                psrs.append(Pulsar(par, tim, ephem=ephem))
+
+        print('Writing pulsars to cache.\n')
+        with open(cached_file, 'wb') as fout:
+            pickle.dump(psrs, fout)
 
     return psrs
 
@@ -248,7 +272,7 @@ def setup_sampler(pta, outdir='chains', resume=False):
 
     sampler = ptmcmc(ndim, pta.get_lnlikelihood, pta.get_lnprior, cov, groups=groups,
                      outDir=outdir, resume=resume)
-    np.savetxt(outdir+'/pars.txt', 
+    np.savetxt(outdir+'/pars.txt',
                list(map(str, pta.param_names)), fmt='%s')
     np.savetxt(outdir+'/priors.txt',
                list(map(lambda x: str(x.__repr__()), pta.params)), fmt='%s')
@@ -317,3 +341,37 @@ class PostProcessing(object):
             plt.hist(self.chain[:, ii], **hist_kwargs)
             plt.title(self.pars[ii], fontsize=8)
         plt.tight_layout()
+
+
+def bayes_fac(samples, ntol=200):
+    """
+    Computes the Savage Dickey Bayes Factor and uncertainty.
+
+    :param samples: MCMC samples of GWB (or common red noise) amplitude
+    :param ntol: Tolerance on number of samples in bin
+
+    :returns: (bayes factor, 1-sigma bayes factor uncertainty)
+    """
+
+    logAmin = -18
+    logAmax = -14
+
+    prior = 1 / (logAmax - logAmin)
+    dA = np.linspace(0.01, 0.1, 100)
+    bf = []
+    bf_err = []
+    mask = [] # selecting bins with more than 200 samples
+
+    for ii,delta in enumerate(dA):
+        n = np.sum(samples <= (logAmin + delta))
+        N = len(samples)
+
+        post = n / N / delta
+
+        bf.append(prior/post)
+        bf_err.append(bf[ii]/np.sqrt(n))
+
+        if n > ntol:
+            mask.append(ii)
+
+    return np.mean(np.array(bf)[mask]), np.std(np.array(bf)[mask])
