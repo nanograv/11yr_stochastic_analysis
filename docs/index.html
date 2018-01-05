@@ -13,6 +13,9 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<style>
+			li { margin-bottom: 8pt; }
+		</style>
 	</head>
 	<body>
 
@@ -25,7 +28,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="index.html" class="logo"><strong>NANOGrav</strong> 11-year Data Set</a>
+									<a href="index.html" class="logo"><strong>NANOGrav</strong> 11-year gravitational-wave background constraints</a>
 									<ul class="icons">
 										<li><a href="https://twitter.com/nanograv?lang=en" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
 										<li><a href="https://www.facebook.com/NANOGrav/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
@@ -37,31 +40,31 @@
 								<section id="banner">
 									<div class="content">
 										<header>
-											<h1>The NANOGrav 11-year Data Set</h1>
-											<h2>Pulsar-timing Constraints On The Stochastic Gravitational-wave Background</h2>
+											<h2>The NANOGrav 11-year Data Set:<br/>Pulsar-Timing Constraints on the Stochastic Gravitational-Wave Background</h2>
 										</header>
-										<p>by <a href="http://nanograv.org/people/">The NANOGrav Collaboration</a></br>
-											Corresponding author: <a href="mailto:srtaylor@caltech.edu?Subject=NANOGrav%2011-year%20Paper"
-											target="_top">Stephen R. Taylor</a>
+										<p>by the <a href="http://nanograv.org/people/">NANOGrav Collaboration</a>;</br>
+											corresponding author: <a href="mailto:srtaylor@caltech.edu?Subject=NANOGrav%2011-year%20Paper"
+											target="_top">Stephen R. Taylor</a>.
 										</p>
+										<p>Submitted to the Astrophysical Journal, Dec 31, 2017.
 										<p>
-											We search for a gravitational-wave
-											background (GWB) in the newly released 11-year dataset
+											We search for a <b>gravitational-wave
+											background</b> (GWB) in the newly released 11-year dataset
 											from the <a href="http://nanograv.org/">North American Nanohertz Observatory for Gravitational
-											Waves (NANOGrav)</a>. While we find no significant evidence for a GWB,
-											we place constraints on a GWB from a population of inspiraling
-											supermassive black hole binaries, from a network of decaying
+											Waves (NANOGrav)</a>. While we find <b>no significant evidence for a GWB</b>,
+											we place <b>new constraints</b> on a GWB from a population of inspiraling
+											supermassive black-hole binaries, from a network of decaying
 											cosmic strings, and from a primordial GWB.
-											For the first time, we find that the GWB upper limits and
-											detection statistics are sensitive to the Solar System ephemeris
-											(SSE) model used, and that SSE errors can mimic a GWB signal.
-											We developed and implemented a novel
-											approach that bridges SSE differences, producing the
-											first pulsar-timing constraints that are robust against SSE uncertainties.
+											For the first time, we find that the <b>GWB upper limits and
+											detection statistics are sensitive to the Solar-System ephemeris</b>
+											(SSE) model that we assume, and that SSE errors can mimic a GWB signal.
+											We develop and implement a novel approach to model SSE errors, producing the first pulsar-timing GWB <b>constraints that are robust against SSE uncertainties</b>. In keeping with the principles of open science, 
+											<b>we release the source code and data for our analysis</b>, as well as a Docker image that can be used to reproduce it.
 										</p>
 										<ul class="actions">
-											<li><a href="#" class="button big">Read paper</a></li>
-											<li><a href="https://github.com/nanograv/11yr_stochastic_analysis" class="button big">View code</a></li>
+											<li><a href="#" class="button medium">Read paper</a></li>
+											<li><a href="https://github.com/nanograv/11yr_stochastic_analysis" class="button medium">View code</a></li>
+											<li><a href="#" class="button medium">Run analysis</a></li>
 										</ul>
 									</div>
 									<span class="image object">
@@ -73,62 +76,53 @@
 								<!-- Section 0 -->
 									<section>
 										<header class="major">
-											<h2>Searching For Gravitational-waves Using Pulsars</h2>
+											<h2>Searching for Gravitational Waves Using Pulsars</h2>
 										</header>
 
 										<div class="row 200%">
 
 											<div class="6u 12u$(medium)">
 												<span class="image fit"><img src="images/pta.jpg" alt="" /></span>
-												<p>Image credit: NRAO</p>
+												<p><b>Image</b>: gravitational-wave detection by pulsar timing. (Credit: NRAO)</p>
 											</div>
 
 											<div class="6u 12u$(medium)">
 												<ul>
 													<li>
-														<h4>Precision timing of millisecond pulsars over years
-															and decades allows us to build models of radio-pulse
-															arrival times with incredible accuracy. These models
-															account for the pulsar's spin period, how it's spin
-															period is changing, dispersion of radio pulses in
+														Precision timing of millisecond pulsars over years
+															and decades allows us to build <b>models of radio-pulse
+															arrival times of incredible accuracy</b>. These models
+															account for the pulsar's spin period, its evolution, the dispersion of radio pulses in
 															the interstellar medium, and many other effects.
-													</h4>
 													</li>
 
 													<li>
-														<h4>A gravitational-wave (GW) propagating between the Earth
-															and a pulsar will squeeze and stretch the
-															intervening space-time. This causes an
-															advance or delay of the pulse arrival times with
+														A <b>gravitational wave</b> (GW) propagating between the Earth
+															and a pulsar will <b>stretch and squeeze</b>
+															space-time between them. This causes alternating
+															advances and delays of pulse arrival times with
 															respect to our model's predictions.
-														</h4>
 													</li>
 
 													<li>
-														<h4>A random background of GWs will lead to apparent noise
-															in the pulsar arrival times, with power predominately
-															at low frequencies. Such a background could come from many
-															inspiraling supermassive black-hole binaries (SMBHBs),
-															a network of decaying cosmic strings, or primordial
-															space-time fluctuations.
-															</article>
-														</h4>
+														A <b>random background of GWs</b> will lead to apparent noise
+															in the pulsar arrival times, with power predominantly
+															at low frequencies. Such a background could come from many <b>inspiraling supermassive black-hole binaries</b> (SMBHBs),
+															a network of decaying <b>cosmic strings</b>, or space-time fluctuations of <b>primordial origin</b>.
 													</li>
 
 													<li>
-														<h4>But this background affects all pulsars in the Milky
-															 Way in a predictably correlated way. We leverage
-															 this signature, correlating data from our large
-															 arrays of pulsars to search for
-															 the common influence of GWs, and intepreting the results
+														While random, this background affects all pulsars in the 
+															 Milky Way with <b>predictable correlations</b>. We leverage
+															 this signature, correlating the pulse times of arrival from our large arrays of pulsars, to search for
+															 the common influence of GWs, interpreting results
 															 in terms of potential sources.
-														</h4>
 													</li>
 
 												</ul>
 
 												<ul class="actions">
-													<li><a href="http://nanograv.org/research/" class="button big">Read more</a></li>
+													<li><a href="http://nanograv.org/research/" class="button medium">Read more</a></li>
 												</ul>
 
 											</div>
@@ -140,7 +134,7 @@
 							<!-- Section 1 -->
 								<section>
 									<header class="major">
-										<h2>11-year Data Set</h2>
+										<h2>The NANOGrav 11-year Data Set</h2>
 									</header>
 
 									<div class="row 200%">
@@ -148,50 +142,45 @@
 										<div class="6u 12u$(medium)">
 											<ul>
 												<li>
-													<h4>NANOGrav's latest data release contains radio-pulse times
-													of arrival (TOAs) and timing-models for 45 millisecond pulsars.
-												</h4>
+													NANOGrav's <b>latest data release</b> contains radio-pulse times
+													of arrival (TOAs) and timing-models for <b>45 millisecond pulsars</b>.
 												</li>
 
 												<li>
-													<h4>The observations span 11.4 years, from July 30th 2005
-														to December 31st 2015. The pulsar with the longest baseline
-														is J1744-1134, which has 11.37 years of observations.
+													The observations span <b>11.4 years</b>, from July 30, 2005,
+														to December 31, 2015. The pulsar with the longest baseline
+														is J1744-1134, with 11.37 years of observations.
 														The pulsar with the largest data volume is J1713+0747,
 														with 27,571 TOAs.
-													</h4>
 												</li>
 
 												<li>
-													<h4>Observations were carried out using the 100-m Robert C.
-														Byrd Green Bank Telescope (GBT) of the
+													Observations were carried out using the 100-m Robert C.
+														Byrd <b>Green Bank Telescope</b> (GBT) of the
 														<a href="http://greenbankobservatory.org/telescopes/gbt/">Green Bank Observatory</a>,
-														and the 305-m William E. Gordon Telescope (Arecibo) of
+														and the 305-m William E. Gordon Telescope (<b>Arecibo</b>) of
 														<a href="http://outreach.naic.edu/ao/scientist-user-portal/">Arecibo Observatory</a>.
-													</h4>
 												</li>
 
 												<li>
-													<h4>In the sky-map shown here, the area of each circle is
-														indicative of the number of TOAs that a pulsar has, while
-														the color scale indicates the observational baseline.
-														The 34 pulsars with baselines greater than 3 years
-														have solid red edges. We use only these 34 in our searches
-														for a background signal of gravitational waves.
-													</h4>
+													In the sky map on the right, pulsar positions are marked by circles, with areas proportional to the number of TOAs in the dataset; the color scale indicates the timing baseline.
+													The <b>34 pulsars with baselines greater than 3 years</b>
+													have solid red edges. We use only these 34 in our searches
+													for a GW background.
 												</li>
 
 											</ul>
 
 											<ul class="actions">
-												<li><a href="#" class="button big">Read data paper</a></li>
-												<li><a href="https://data.nanograv.org/" class="button big">Download data</a></li>
+												<li><a href="#" class="button medium">Read data paper</a></li>
+												<li><a href="https://data.nanograv.org/" class="button medium">Download data</a></li>
 											</ul>
 
 										</div>
 
 										<div class="6u 12u$(medium)">
 											<span class="image fit"><img src="images/nano11yr_pulsardist.png" alt="" /></span>
+												<p><b>Image</b>: sky map of NANOGrav pulsars.</p>
 										</div>
 
 									</div>
@@ -202,57 +191,53 @@
 								<!-- Section 2 -->
 									<section>
 										<header class="major">
-											<h2>Ephemeris dependence of results</h2>
+											<h2>Dependence of Results on Solar-System Ephemeris</h2>
 										</header>
 
 										<div class="row 200%">
 
 											<div class="6u 12u$(medium)">
 												<span class="image fit"><img src="images/hcf_uls.png" alt="" /></span>
+													<p><b>Image</b>: Upper limit on a power-law stochastic background, as a function of spectral slope, and for different ephemeris choices.</p>
+
 											</div>
 
 											<div class="6u 12u$(medium)">
 
 												<ul>
 													<li>
-														<h4>Our fiducial analysis treats the power spectrum of
+														Our fiducial analysis treats the power spectrum of
 															timing deviations caused by a GWB
-															as a power-law, with an amplitude (calibrated to a
+															as a <b>power law</b>, defined by an amplitude (calibrated to a
 															frequency of 1/year) and a spectral index. A GWB from
 															a population of supermassive black-hole
-															binaries (SMBHBs) has an index of 4.33.
-														</h4>
+															binaries (SMBHBs) has spectral index 4.33.
 													</li>
 
 													<li>
-														<h4>Upper limits (shown here at 95% credibility) and signal-vs-noise
-															Bayes factors depend strongly on which model of the
-															Solar-System Ephemeris (SSE) we used. We tested a
-															variety of <a href="https://ssd.jpl.nasa.gov/?ephemerides">models</a>
-															from the <a href="https://www.jpl.nasa.gov/">Jet Propulsion Laboratory (JPL)</a>,
-															 and also some <a href="https://www.imcce.fr/inpop/">INPOP models</a>.
+														We find that <b>upper limits</b> (shown here at 95% credibility) and signal-vs.-noise
+															Bayes factors <b>depend strongly</b> on which
+															<b>Solar-System Ephemeris</b> (SSE) we adopt. We consider a
+															variety of SSEs</a>
+															from the <a href="https://ssd.jpl.nasa.gov/?ephemerides">Jet Propulsion Laboratory</a> and <a href="https://www.imcce.fr/inpop/">INPOP </a>;
 															 Bayes factors vary by over an order
- 															of magnitude (from non-detection to promising feature)
- 															depending on the SSE. Hence, systematic
- 															errors in the SSE can mimic a GW signal, giving us
- 															spurious results.
-														</h4>
+ 															of magnitude (from clear nondetection to promising feature)
+ 															depending on the SSE. Hence, <b>systematic
+ 															errors in the SSE can mimic a GW signal</b>.
 													</li>
 
 													<li>
-														<h4>Most errors arise from uncertainties on Jupiter's
-															orbital properties, and the correlated influence of
+														The most influential errors arise from the <b>uncertainties on Jupiter's
+															orbit</b>, and from the correlated influence of
 															Uranus and Neptune's uncertainties on Jupiter. These
-															make it hard to compute the center of the Solar-System
+															make it hard to locate the center of the Solar-System
 															to the precision and accuracy needed for pulsar-timing
 															GW detection.
-														</h4>
 													</li>
 
 													<li>
-														<h4>We have developed a scheme (known as ''BayesEphem'')
+														We have developed a scheme (<b>BayesEphem</b>)
 															to mitigate these SSE errors, which is described below.
-													</h4>
 													</li>
 
 												</ul>
@@ -266,7 +251,7 @@
 									<!-- Section 3 -->
 										<section>
 											<header class="major">
-												<h2>BayesEphem</h2>
+												<h2>Robust Upper Limits and Detection Statistics</h2>
 											</header>
 
 											<div class="row 200%">
@@ -275,49 +260,31 @@
 
 													<ul>
 														<li>
-															<h4>Our modeling scheme begins with a baseline estimate
-																of the SSE (one of the JPL DE- models, or other).
-															</h4>
+															Our scheme starts with a baseline ephemeris; we then construct an <b>11-parameter model that perturbs
+															the position of the Solar-System barycenter</b> (SSB).
+															The model includes a drift-rate of the Earth's orbit about the ecliptic z-axis, mass perturbations of the gas giants, as well as linearized corrections to Jupiter's orbital elements (e.g., eccentricity, semi-major axis, etc.). The corrections are dominant influence.
 														</li>
 
 														<li>
-															<h4>We then construct an 11-parameter model that perturbs
-																the position of the Solar-System barycenter (SSB). This
-																corresponds to a drift-rate of the Earth's orbit about the
-																ecliptic z-axis, mass perturbations to the gas giants,
-																and linear corrections to Jupiter's orbital elements
-																(e.g. eccentricity, semi-major axis, etc.). Jupiter's
-																orbit is the dominant influence.
-															</h4>
+															BayesEphem yields <b>consistent GWB upper
+																limits and detection statistics</b>, no matter
+																which baseline SSE model we adopt (see image).
 														</li>
 
 														<li>
-															<h4>Regardless of which baseline SSE model we use, our
-																correction scheme (''BayesEphem'') bridges the systematic
-																differences between them, giving consistent GWB upper
-																limits and detection statistics. This is shown in
-																the image here.
-															</h4>
-														</li>
-
-														<li>
-															<h4>Our fiducial GWB amplitude upper limit is 1.45e-15 (when
-																inter-pulsar correlations are modeled), and 1.34e-15 (when
-																correlations are not modeled). The signal-vs-noise Bayes factors
-																mildly disfavor a GWB signal, but the value is very weak. There
+															Our <b>fiducial GWB amplitude upper limit is 1.45 10<sup>&minus;15</sup></b> (when
+																inter-pulsar correlations are modeled), and 1.34 10<sup>&minus;15</sup> (when they are not, as in previously reported limits). Signal-vs.-noise Bayes factors
+																disfavor a GWB signal mildly; there
 																is no evidence for the expected inter-pulsar correlation
 																signature from GWs.
-															</h4>
 														</li>
 
 														<li>
-															<h4>Previous results from NANOGrav (and other PTAs) must be revised
-																in light of this new modeling scheme.
+															<b>Previous results</b> from NANOGrav (and other PTAs) <b>must be revised</b>
+																in light of the effect of ephemeris uncertainties.
 																<a href="https://arxiv.org/abs/1505.07540">NANOGrav's 9-year Data Set</a>
-																<a href="https://arxiv.org/abs/1508.03024">upper limit</a> is revised from 1.5e-15
-																under DE421 to 2.67e-15 (without correlations) and
-																2.91e-15 (with correlations).
-															</h4>
+																<a href="https://arxiv.org/abs/1508.03024">upper limit</a> is revised from 1.5 10<sup>&minus;15</sup>
+																under DE421 to 2.67 10<sup>&minus;15</sup> with BayesEphem, without correlations; and to 2.91 10<sup>&minus;15</sup> with BayesEphem, with correlations.
 														</li>
 
 													</ul>
@@ -326,11 +293,10 @@
 
 												<div class="6u 12u$(medium)">
 													<span class="image fit"><img src="images/gwbamp_posterior.png" alt="" /></span>
-													<p>Image: The Bayesian probability distribution
-													of the GWB amplitude at a frequency of 1/year. Dashed lines
-													correspond to adopting the relevant SSE model without
-													accounting for errors, while solid lines merely use
-													the SSE model as the baseline in BayesEphem.</p>
+													<p><b>Image</b>: Bayesian posterior probability density
+													for the GWB amplitude at frequency of 1/year. Dashed lines
+													correspond to adopting SSE models without
+													accounting for errors, while solid lines of the same colors correspond to using BayesEphem with the same SSE as baseline.</p>
 												</div>
 
 											</div>
@@ -349,55 +315,46 @@
 
 													<div class="6u 12u$(medium)">
 														<span class="image fit"><img src="images/smbh.png" alt="" /></span>
-														<p>Image: (Top-) Bayesian joint probability distribution for
-															galactic-core stellar density (y-axs) and SMBHB eccentricity
-															(x-axis), at several fixed values of the y-intercept of
-															the BH-bulge mass relationship.
-															(Bottom-) Translation of probability distribution to strain
+														<p><b>Image</b>: (Top) Bayesian posterior probability distribution for
+															galactic-core stellar density (y axis) and SMBHB eccentricity
+															(x axis), at several fixed values of the y-intercept of
+															the BH&ndash;bulge mass relationship.
+															(Bottom) Translation of probability distribution to strain
 															spectra. Larger y-intercept values give larger spectral amplitudes,
-															needing stronger environmental driving to attenuate the spectrum
-															at low frequencies and thereby avoid inconsistencies with the data.
+															since they require stronger environmental driving to attenuate the spectrum
+															at low frequencies, and thereby avoid inconsistencies with the data.
 													</div>
 
 													<div class="6u 12u$(medium)">
 
 														<ul>
 															<li>
-																<h4>A GWB can be created from the incoherent superposition
-																	of GW signals from inspiraling SMBHBs throughout
-																	the Universe. These binaries form as massive galaxies
-																	merge, and their resident SMBHs sink together to
+																A GWB can be created from the incoherent superposition
+																	of GW signals from inspiraling <b>SMBHBs</b> throughout
+																	the Universe. These binaries <b>form after massive galaxies
+																	merge</b>, when their resident SMBHs sink together to the galactic nucleus and
 																	form a bound system.
+															</li>
+
+															<li>
+																The fiducial characteristic-strain spectrum from
+																	such a SMBHB population is a <b>power law with &minus;2/3
+																	spectral index</b>. However, <b>many processes can influence the amplitude and shape of this spectrum</b>.
 																</h4>
 															</li>
 
 															<li>
-																<h4>The fiducial characteristic strain spectrum from
-																	such a SMBHB population is a power-law with a -2/3
-																	spectral index. But many processes can influence the
-																	amplitude and shape of this spectrum.
-																</h4>
+																SMBHBs can remain strongly coupled to their galactic
+																	environments even while they emit GWs at frequencies in the PTA sensitivity band.
+																	This causes the <b>spectrum to deviate from a power law</b>. Binary eccentricity can also cause spectral
+																	attenuation as power is distributed to higher
+																	orbital-frequency harmonics.
 															</li>
 
 															<li>
-																<h4>SMBHBs can remain strongly coupled to their galactic
-																	environments even at frequencies in the PTA sensitivity band.
-																	This causes the spectrum to deviate from a power-law, creating
-																	a turnover. Binary eccentricity can also cause spectral
-																	attenutation, as power is distributed to higher
-																	orbital frequency harmonics.
-																</h4>
-															</li>
-
-															<li>
-																<h4>We trained a Gaussian Process to interpolate over
-																	spectra from a grid of binary population simulations.
-																	This gave us joint constraints on BH-galaxy scaling
-																	relationships, galactic-core stellar densities, and
-																	typical SMBHB eccentricities. This modeling scheme
-																	can be trivially expanded to include many other dynamical
-																	and demographic properties.
-																</h4>
+																We train a Gaussian Process to interpolate over
+																	GWB spectra from a grid of binary population simulations. We can the derive <b>joint constraints on BH&ndash;galaxy scaling
+																	relationships, galactic-core stellar densities, and typical SMBHB eccentricities</b>. This modeling scheme can be expanded to include many other dynamical and demographic properties.
 															</li>
 
 														</ul>
@@ -421,44 +378,41 @@
 
 															<ul>
 																<li>
-																	<h4>Cosmic strings are topological defects in
-																		space-time that could have formed when the
+																	Cosmic strings are <b>topological defects in
+																		space-time</b> that could have formed when the
 																		early Universe underwent a phase transition.
 																		Networks of these long strings can intersect,
 																		chopping off small loops that vibrate
-																		relativistically, and decay via GW emission.
-																		Higher string tensions (x-axis in the image here)
-																		give stronger GW emission.
-																	</h4>
+																		relativistically and decay via GW emission.
+																		Higher string tensions (on the right side in the image here) yield stronger GW emission.
 																</li>
 
 																<li>
-																	<h4>Field-Theory strings have a definite probability
+																	The strings predicted in <b>quantum field theory</b> have a definite probability
 																		of intersecting when they inhabit the same space.
-																		But String-Theory strings must also intersect
-																		in all higher compactified spatial dimensions, such
-																		that intersection probabilities (y-axis in the image here)
+																		By contrast, <b>cosmic superstrings</b> must also intersect
+																		in all higher compactified spatial dimensions, so
+																		that their intersection probabilities (on the y axis in the image here)
 																		can be less than one.
-																	</h4>
 																</li>
 
 																<li>
-																	<h4>We trained a Gaussian Process to interpolate over spectra
+																	We train a Gaussian Process to interpolate over spectra
 																		from the most up-to-date cosmic-string simulations, allowing
-																		us to directly constrain string tension at different
-																		intersection probabilities. Our modeling scheme and constraints
+																		us to <b>constrain string tension at different
+																		intersection probabilities</b>. Our modeling scheme and constraints
 																		improve on the <a href="https://arxiv.org/abs/1508.03024">NANOGrav 9-year</a>
 																		and <a href="https://arxiv.org/abs/1504.03692">most recent EPTA</a> results.
 																	</h4>
 																</li>
 
 																<li>
-																	<h4>Our upper limit on the cosmic-string tension
-																		(at an intersection probability of one) is 5.3e-11.
+																	Our <b>upper limit on the cosmic-string tension</b>
+																		at an intersection probability of one is <b>5.3 10<sup>&minus;11</sup></b>.
 																		At this level, cosmic-string signatures are unlikely
 																		to be seen in the CMB power spectrum or through other means.
-																		PTAs continue to be the best tool for probing
-																		cosmic strings.
+																		PTAs continue to be the <b>best tool for probing
+																		cosmic strings</b>.
 																	</h4>
 																</li>
 
@@ -468,7 +422,7 @@
 
 														<div class="6u 12u$(medium)">
 															<span class="image fit"><img src="images/cosmicstrings.png" alt="" /></span>
-															<p>Image: The solid black line enclosing a blue region
+															<p><b>Image</b>: The solid black line enclosing a blue region
 																denotes the parameter space excluded by our analysis
 																to 95% credibility.
 																Dashed lines enclosing a blue region show similar
@@ -486,18 +440,18 @@
 												<!-- Section 6 -->
 													<section>
 														<header class="major">
-															<h2>Primordial Gravitational-waves</h2>
+															<h2>Primordial Gravitational Waves</h2>
 														</header>
 
 														<div class="row 200%">
 
 															<div class="6u 12u$(medium)">
 																<span class="image fit"><img src="images/relicgws.png" alt="" /></span>
-																<p>Table: 95% upper limits on the amplitude of a
+																<p><b>Table</b>: 95% upper limits on the amplitude of a
 																	primordial GWB (at a frequency of 1/year).
 																	Different models for the inflationary equation
 																	of state are assumed depending on whether matter, radiation,
-																	or kinetic-energy dominated the Universe. The analysis is
+																	or kinetic-energy dominated the Universe at that time. The analysis is
 																	repeated for different SSE models, and under BayesEphem.
 															</div>
 
@@ -505,38 +459,25 @@
 
 																<ul>
 																	<li>
-																		<h4>Quantum fluctuations in space-time during
-																			the very early Universe
+																		<b>Quantum space-time fluctuations in
+																			the very early Universe</b>
 																			may have been amplified to cosmological scales
 																			by the process of inflation. This creates a
 																			background of primordial GWs.
-																		</h4>
 																	</li>
 
 																	<li>
-																		<h4>Indirect signatures are being actively searched
-																			for in CMB polarization, through so-called
-																			''B modes''. But GW instruments allow direct
-																			detection of these primordial GWs, and an
+																		Current experiments search for indirect signatures of these background in the polarization of the CMB, through so-called
+																			<b>B modes</b>. GW instruments may allow the <b>direct
+																			detection</b> of these primordial GWs, providing
 																			unparalleled insight into early-Universe cosmology.
-																		</h4>
 																	</li>
 
 																	<li>
-																		<h4>We placed limits on the amplitude of a GWB
-																			(at a frequency of 1/year) for a variety of
-																			different assumptions on whether matter, radiation,
-																			or kinetic-energy dominated the content of the
-																			Universe during inflation.
-																		</h4>
-																	</li>
-
-																	<li>
-																		<h4>For radiation-dominated inflation, the
+																		We place limits on the amplitude of a GWB
+																			(at a frequency of 1/year) for a variety of assumptions on the dominant content of the Universe during inflation. <b>For radiation-dominated inflation, the
 																			Hubble-independent energy-density of the
-																			Universe (as a fraction of closure density)
-																			is constrained to 3.4e-10.
-																		</h4>
+																			Universe</b> (as a fraction of closure density) is constrained to <b>3.4 10<sup>&minus;10</sup></b>.
 																	</li>
 
 																</ul>
@@ -552,38 +493,141 @@
 													<!-- Section 7 -->
 														<section>
 															<header class="major">
-																<h2>Get In Touch</h2>
+																<h2>Authors</h2>
 															</header>
 
 															<div class="row 200%">
 
 																<div class="6u 12u$(medium)">
-
-																	<ul class="contact">
-																		<li class="fa-user"><a href="http://stevertaylor.github.io/">Dr Stephen R. Taylor</a></li>
-																		<li class="fa-envelope-o"><a href="mailto:srtaylor@caltech.edu?Subject=NANOGrav%2011-year%20Paper"
-																		target="_top">srtaylor@caltech.edu</a></li>
-																		<li class="fa-phone">+1 (626) 395-2318</li>
-																		<li class="fa-home">California Institute of Technology<br />
-																			TAPIR Group<br />
-																			MC 350-17<br />
-																			1200 East California Boulevard<br />
-																			Pasadena, CA 91125<br />
-																			United States of America
+																	<ul>
+																		<li>
+The <b>NANOGrav Collaboration</b>:
+Z. Arzoumanian<!--<sup>1</sup>-->,
+P. T. Baker<!--<sup>2,3</sup>-->,
+A. Brazier<!--<sup>4</sup>-->,
+S. Burke-Spolaor<!--<sup>2,3</sup>-->,
+S. J. Chamberlin<!--<sup>5</sup>-->,
+S. Chatterjee<!--<sup>4</sup>-->,
+B. Christy<!--<sup>6</sup>-->,
+J. M. Cordes<!--<sup>4</sup>-->,
+N. J. Cornish<!--<sup>7</sup>-->,
+F. Crawford<!--<sup>8</sup>-->,
+H. Thankful Cromartie<!--<sup>9</sup>-->,
+K. Crowter<!--<sup>10</sup>-->,
+M. DeCesar<!--<sup>&dagger;11</sup>-->,
+P. B. Demorest<!--<sup>12</sup>-->,
+T. Dolch<!--<sup>13</sup>-->,
+J. A. Ellis<!--<sup>&dagger;2,3</sup>-->
+R. D. Ferdman<!--<sup>14</sup>-->,
+E. Ferrara<!--<sup>15</sup>-->,
+W. M. Folkner<!--<sup>16</sup>-->,
+E. Fonseca<!--<sup>17</sup>-->,
+N. Garver-Daniels<!--<sup>2,3</sup>-->,
+P. A. Gentile<!--<sup>2,3</sup>-->,
+R. Haas<!--<sup>18</sup>-->,
+J. S. Hazboun<!--<sup>&dagger;19,20</sup>-->,
+E. A. Huerta<!--<sup>18</sup>-->,
+K. Islo<!--<sup>21</sup>-->,
+F. Jenet<!--<sup>20</sup>-->,
+G. Jones<!--<sup>21</sup>-->,
+M. L. Jones<!--<sup>2,3</sup>-->,
+D. L. Kaplan<!--<sup>21</sup>-->,
+V. M. Kaspi<!--<sup>17</sup>-->,
+M. T. Lam<!--<sup>&dagger;2,3</sup>-->,
+T. J. W. Lazio<!--<sup>16,23</sup>-->,
+L. Levin<!--<sup>24</sup>-->,
+A. N. Lommen<!--<sup>25</sup>-->,
+D. R. Lorimer<!--<sup>2,3</sup>-->,
+J. Luo<!--<sup>20</sup>-->,
+R. S. Lynch<!--<sup>26</sup>-->,
+D. R. Madison<!--<sup>ddagger;27</sup>-->,
+M. A. McLaughlin<!--<sup>2,3</sup>-->,
+S. T. McWilliams<!--<sup>2,3</sup>-->,
+C. M. F. Mingarelli<!--<sup>28</sup>-->,
+C. Ng<!--<sup>10</sup>-->,
+D. J. Nice<!--<sup>11</sup>-->,
+R. S. Park<!--<sup>16</sup>-->,
+T. T. Pennucci<!--<sup>&dagger;2,3,29,30</sup>-->,
+N. S. Pol<!--<sup>2,3</sup>-->,
+S. M. Ransom<!--<sup>9,27</sup>-->,
+P. S. Ray<!--<sup>31</sup>-->,
+A. Rasskazov<!--<sup>29,30</sup>-->,
+X. Siemens<!--<sup>21</sup>-->,
+J. Simon<!--<sup>16</sup>-->,
+R. Spiewak<!--<sup>21,33</sup>-->,
+I. H. Stairs<!--<sup>10</sup>-->,
+D. R. Stinebring<!--<sup>34</sup>-->,
+K. Stovall<!--<sup>&dagger;35</sup>-->,
+J. Swiggum<!--<sup>&dagger;21</sup>-->,
+S. R. Taylor<!--<sup>&dagger;23,16</sup>-->,
+M. Vallisneri<!--<sup>16,23</sup>-->,
+S. Vigeland<!--<sup>&dagger;21</sup>-->,
+W. W. Zhu<!--<sup>36,37</sup>-->
 																		</li>
-																	</ul>
 
+<!--																		<li>
+<sup>1</sup>Center for Research and Exploration in Space Science and Technology and X-Ray Astrophysics Laboratory, NASA Goddard Space Flight Center, Code 662, Greenbelt, MD 20771, USA<br/>
+<sup>2</sup>Department of Physics and Astronomy, West Virginia University, P.O.~Box 6315, Morgantown, WV 26506, USA<br/>
+<sup>3</sup>Center for Gravitational Waves and Cosmology, West Virginia University, Chestnut Ridge Research Building, Morgantown, WV 26505, USA<br/>
+<sup>4</sup>Department of Astronomy, Cornell University, Ithaca, NY 14853, USA<br/>
+<sup>5</sup>Department of Astronomy and Astrophysics, Pennsylvania State University, University Park, PA 16802, USA<br/>
+<sup>6</sup>Notre Dame of Maryland University, 4701 N.~Charles Street, Baltimore, MD 21210, USA<br/>
+<sup>7</sup>Department of Physics, Montana State University, Bozeman, MT 59717, USA<br/>
+<sup>8</sup>Department of Physics and Astronomy, Franklin and Marshall College, P.O.~Box 3003, Lancaster, PA 17604, USA<br/>
+<sup>9</sup>University of Virginia, Department of Astronomy, P.O.~Box 400325, Charlottesville, VA 22904, USA<br/>
+<sup>10</sup>Department of Physics and Astronomy, University of British Columbia, 6224 Agricultural Road, Vancouver, BC V6T 1Z1, Canada<br/>
+<sup>11</sup>Department of Physics, Lafayette College, Easton, PA 18042, USA<br/>
+<sup>12</sup>National Radio Astronomy Observatory, 1003 Lopezville Rd., Socorro, NM 87801, USA<br/>
+<sup>13</sup>Department of Physics, Hillsdale College, 33 E.~College Street, Hillsdale, Michigan 49242, USA<br/>
+<sup>14</sup>Department of Physics, University of East Anglia, Norwich, UK<br/>
+<sup>15</sup>NASA Goddard Space Flight Center, Greenbelt, MD 20771, USA<br/>
+<sup>16</sup>Jet Propulsion Laboratory, California Institute of Technology, 4800 Oak Grove Drive, Pasadena, CA 91109, USA<br/>
+<sup>17</sup>Department of Physics, McGill University, 3600  University St., Montreal, QC H3A 2T8, Canada<br/>
+<sup>18</sup>NCSA, University of Illinois at Urbana-Champaign, Urbana, Illinois 61801, USA<br/>
+<sup>19</sup>University of Washington Bothell, 18115 Campus Way NE, Bothell, WA 98011, USA<br/>
+<sup>20</sup>Center for Advanced Radio Astronomy, University of Texas Rio Grande Valley, Brownsville, TX 78520, USA<br/>
+<sup>21</sup>Center for Gravitation, Cosmology and Astrophysics, Department of Physics, University of Wisconsin-Milwaukee, P.O.~Box 413, Milwaukee, WI 53201, USA<br/>
+<sup>22</sup>Department of Physics, Columbia University, New York, NY 10027, USA<br/>
+<sup>23</sup>Theoretical AstroPhysics Including Relativity (TAPIR), MC 350-17, California Institute of Technology, Pasadena, California 91125, USA<br/>
+<sup>24</sup>Jodrell Bank Centre for Astrophysics, University of Manchester, Manchester, M13 9PL, United Kingdom<br/>
+<sup>25</sup>Department of Physics and Astronomy, Haverford College, Haverford, PA 19041, USA<br/>
+<sup>26</sup>Green Bank Observatory, P.O.~Box 2, Green Bank, WV 24944, USA<br/>
+<sup>27</sup>National Radio Astronomy Observatory, 520 Edgemont Road, Charlottesville, VA 22903, USA<br/>
+<sup>28</sup>Center for Computational Astrophysics, Flatiron Institute, 162 Fifth Avenue, New York, NY 10010, USA<br/>
+<sup>29</sup>Institute of Physics, E&ouml;tv&ouml;s Lor&aacute;nd University, P&aacute;zm&aacute;ny P. s. 1/A, 1117 Budapest, Hungary<br/>
+<sup>30</sup>Hungarian Academy of Sciences MTA-ELTE Extragalactic Astrophysics Research Group, 1117 Budapest, Hungary<br/>
+<sup>31</sup>Naval Research Laboratory, Washington DC 20375, USA<br/>
+<sup>32</sup>School of Physics and Astronomy and Center for Computational Relativity and Gravitation, Rochester Institute of Technology, Rochester, NY 14623, USA<br/>
+<sup>33</sup>Centre for Astrophysics and Supercomputing, Swinburne University of Technology, PO Box 218, Hawthorn VIC 3122, Australia<br/>
+<sup>34</sup>Department of Physics and Astronomy, Oberlin College, Oberlin, OH 44074, USA<br/>
+<sup>35</sup>Department of Physics and Astronomy, University of New Mexico, Albuquerque, NM 87131, USA<br/>
+<sup>36</sup>National Astronomical Observatories, Chinese Academy of Science, 20A Datun Road, Chaoyang District, Beijing 100012, China<br/>
+<sup>37</sup>Max Planck Institute for Radio Astronomy, Auf dem H&uuml;gel 69, D-53121 Bonn, Germany<br/>
+<sup>&dagger;</sup> NANOGrav Physics Frontiers Center Postdoctoral Fellow<br/>
+<sup>&ddagger;</sup> Jansky Fellow<br/>
+																		</small></li> -->
+
+																	<li><b>Contact</b>: 
+<a href="mailto:srtaylor@caltech.edu?Subject=NANOGrav%2011-year%20Paper" target="_top">Dr. Stephen R. Taylor</a> (corresponding author), 
+<a href="mailto:maura.mclaughlin@mail.wvu.edu?Subject=NANOGrav%2011-year%20Paper" target="_top">Prof. Maura McLaughlin</a> (NANOGrav chair).</li>
+
+																	</ul>
 																</div>
 
 																<div class="6u 12u$(medium)">
 																	<span class="image fit"><img src="images/nano_people.jpg" alt="" /></span>
-																	<p>The NANOGrav Collaboration at the recent Fall meeting in Lafayette College, PA
+																	<p>The NANOGrav Collaboration at the 2017 Fall meeting in Lafayette College, PA
 																</div>
 
 															</div>
 
 
 														</section>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<p class="copyright">&copy; NANOGrav 2018. All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+		</footer>
 
 			</div>
 
@@ -594,10 +638,7 @@
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
 
-		<!-- Footer -->
-		<footer id="footer">
-			<p class="copyright">&copy; S. R. Taylor. All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-		</footer>
+
 
 	</body>
 
