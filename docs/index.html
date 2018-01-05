@@ -28,7 +28,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="index.html" class="logo"><strong>NANOGrav</strong> 11-year gravitational-wave background constraints</a>
+									<a href="index.html" class="logo"><strong>NANOGrav</strong> 11-year Gravitational-wave Background Constraints</a>
 									<ul class="icons">
 										<li><a href="https://twitter.com/nanograv?lang=en" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
 										<li><a href="https://www.facebook.com/NANOGrav/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
@@ -58,13 +58,13 @@
 											For the first time, we find that the <b>GWB upper limits and
 											detection statistics are sensitive to the Solar-System ephemeris</b>
 											(SSE) model that we assume, and that SSE errors can mimic a GWB signal.
-											We develop and implement a novel approach to model SSE errors, producing the first pulsar-timing GWB <b>constraints that are robust against SSE uncertainties</b>. In keeping with the principles of open science, 
+											We develop and implement a novel approach to model SSE errors, producing the first pulsar-timing GWB <b>constraints that are robust against SSE uncertainties</b>. In keeping with the principles of open science,
 											<b>we release the source code and data for our analysis</b>, as well as a Docker image that can be used to reproduce it.
 										</p>
 										<ul class="actions">
 											<li><a href="#" class="button medium">Read paper</a></li>
 											<li><a href="https://github.com/nanograv/11yr_stochastic_analysis" class="button medium">View code</a></li>
-											<li><a href="#" class="button medium">Run analysis</a></li>
+											<li><a href="https://hub.docker.com/r/nanograv/nano11y-gwb/" class="button medium">Run analysis</a></li>
 										</ul>
 									</div>
 									<span class="image object">
@@ -112,7 +112,7 @@
 													</li>
 
 													<li>
-														While random, this background affects all pulsars in the 
+														While random, this background affects all pulsars in the
 															 Milky Way with <b>predictable correlations</b>. We leverage
 															 this signature, correlating the pulse times of arrival from our large arrays of pulsars, to search for
 															 the common influence of GWs, interpreting results
@@ -163,7 +163,7 @@
 												</li>
 
 												<li>
-													In the sky map on the right, pulsar positions are marked by circles, with areas proportional to the number of TOAs in the dataset; the color scale indicates the timing baseline.
+													In the sky map shown here, pulsar positions are marked by circles, with areas proportional to the number of TOAs in the dataset; the color scale indicates the timing baseline.
 													The <b>34 pulsars with baselines greater than 3 years</b>
 													have solid red edges. We use only these 34 in our searches
 													for a GW background.
@@ -262,7 +262,11 @@
 														<li>
 															Our scheme starts with a baseline ephemeris; we then construct an <b>11-parameter model that perturbs
 															the position of the Solar-System barycenter</b> (SSB).
-															The model includes a drift-rate of the Earth's orbit about the ecliptic z-axis, mass perturbations of the gas giants, as well as linearized corrections to Jupiter's orbital elements (e.g., eccentricity, semi-major axis, etc.). The corrections are dominant influence.
+															The model includes a drift-rate of the Earth's orbit
+															about the ecliptic z-axis, mass perturbations of the gas giants,
+															as well as linearized corrections to Jupiter's orbital elements
+															(e.g., eccentricity, semi-major axis, etc.). These
+															corrections are the dominant influence.
 														</li>
 
 														<li>
@@ -272,8 +276,8 @@
 														</li>
 
 														<li>
-															Our <b>fiducial GWB amplitude upper limit is 1.45 10<sup>&minus;15</sup></b> (when
-																inter-pulsar correlations are modeled), and 1.34 10<sup>&minus;15</sup> (when they are not, as in previously reported limits). Signal-vs.-noise Bayes factors
+															Our <b>fiducial GWB amplitude upper limit is 1.45 x 10<sup>&minus;15</sup></b> (when
+																inter-pulsar correlations are modeled), and 1.34 x 10<sup>&minus;15</sup> (when they are not, as in previously reported limits). Signal-vs.-noise Bayes factors
 																disfavor a GWB signal mildly; there
 																is no evidence for the expected inter-pulsar correlation
 																signature from GWs.
@@ -283,8 +287,8 @@
 															<b>Previous results</b> from NANOGrav (and other PTAs) <b>must be revised</b>
 																in light of the effect of ephemeris uncertainties.
 																<a href="https://arxiv.org/abs/1505.07540">NANOGrav's 9-year Data Set</a>
-																<a href="https://arxiv.org/abs/1508.03024">upper limit</a> is revised from 1.5 10<sup>&minus;15</sup>
-																under DE421 to 2.67 10<sup>&minus;15</sup> with BayesEphem, without correlations; and to 2.91 10<sup>&minus;15</sup> with BayesEphem, with correlations.
+																<a href="https://arxiv.org/abs/1508.03024">upper limit</a> is revised from 1.5 x 10<sup>&minus;15</sup>
+																under DE421 to 2.67 x 10<sup>&minus;15</sup> with BayesEphem, without correlations; and to 2.91 x 10<sup>&minus;15</sup> with BayesEphem, with correlations.
 														</li>
 
 													</ul>
@@ -384,7 +388,8 @@
 																		Networks of these long strings can intersect,
 																		chopping off small loops that vibrate
 																		relativistically and decay via GW emission.
-																		Higher string tensions (on the right side in the image here) yield stronger GW emission.
+																		Higher string tensions (large x-axis values
+																		in the image here) yield stronger GW emission.
 																</li>
 
 																<li>
@@ -392,7 +397,7 @@
 																		of intersecting when they inhabit the same space.
 																		By contrast, <b>cosmic superstrings</b> must also intersect
 																		in all higher compactified spatial dimensions, so
-																		that their intersection probabilities (on the y axis in the image here)
+																		that their intersection probabilities (on the y-axis in the image here)
 																		can be less than one.
 																</li>
 
@@ -408,7 +413,7 @@
 
 																<li>
 																	Our <b>upper limit on the cosmic-string tension</b>
-																		at an intersection probability of one is <b>5.3 10<sup>&minus;11</sup></b>.
+																		at an intersection probability of one is <b>5.3 x 10<sup>&minus;11</sup></b>.
 																		At this level, cosmic-string signatures are unlikely
 																		to be seen in the CMB power spectrum or through other means.
 																		PTAs continue to be the <b>best tool for probing
@@ -467,7 +472,7 @@
 																	</li>
 
 																	<li>
-																		Current experiments search for indirect signatures of these background in the polarization of the CMB, through so-called
+																		Current experiments search for indirect signatures of this background in the polarization of the CMB, through so-called
 																			<b>B modes</b>. GW instruments may allow the <b>direct
 																			detection</b> of these primordial GWs, providing
 																			unparalleled insight into early-Universe cosmology.
@@ -607,8 +612,8 @@ W. W. Zhu<!--<sup>36,37</sup>-->
 <sup>&ddagger;</sup> Jansky Fellow<br/>
 																		</small></li> -->
 
-																	<li><b>Contact</b>: 
-<a href="mailto:srtaylor@caltech.edu?Subject=NANOGrav%2011-year%20Paper" target="_top">Dr. Stephen R. Taylor</a> (corresponding author), 
+																	<li><b>Contact</b>:
+<a href="mailto:srtaylor@caltech.edu?Subject=NANOGrav%2011-year%20Paper" target="_top">Dr. Stephen R. Taylor</a> (corresponding author),
 <a href="mailto:maura.mclaughlin@mail.wvu.edu?Subject=NANOGrav%2011-year%20Paper" target="_top">Prof. Maura McLaughlin</a> (NANOGrav chair).</li>
 
 																	</ul>
