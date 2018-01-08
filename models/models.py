@@ -25,22 +25,6 @@ def free_spectrum(f, log10_rho=None):
     """
     return np.repeat(10**(2*log10_rho), 2)
 
-@signal_base.function
-def dipole_orf(pos1, pos2):
-    """Dipole spatial correlation function."""
-    if np.all(pos1 == pos2):
-        return 1
-    else:
-        return 0.5 * np.dot(pos1, pos2)
-
-@signal_base.function
-def monopole_orf(pos1, pos2):
-    """Monopole spatial correlation function."""
-    if np.all(pos1 == pos2):
-        return 1
-    else:
-        return 0.5
-
 
 #### Model component building blocks ####
 
@@ -144,8 +128,8 @@ def common_red_noise_block(psd='powerlaw', prior='log-uniform',
 
     """
 
-    orfs = {'hd': utils.hd_orf(), 'dipole': dipole_orf(),
-            'monopole': monopole_orf()}
+    orfs = {'hd': utils.hd_orf(), 'dipole': utils.dipole_orf(),
+            'monopole': utils.monopole_orf()}
 
     # common red noise parameters
     if psd in ['powerlaw', 'turnover']:
