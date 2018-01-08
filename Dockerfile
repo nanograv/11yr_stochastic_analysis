@@ -108,8 +108,8 @@ RUN pip install --global-option=build_ext --global-option="-L/usr/local/lib" sci
 RUN pip install git+https://github.com/dfm/acor.git@master
 RUN pip install git+https://github.com/jellis18/PTMCMCSampler@master
 
-# install enterprise (11 Dec 2017)
-RUN pip install git+https://github.com/nanograv/enterprise@04607ef
+# install enterprise (v1.0.0)
+RUN pip install git+https://github.com/nanograv/enterprise@v1.0.0
 
 # matplotlib rc (default backend: Agg)
 RUN mkdir -p /home/nanograv/.config/matplotlib
