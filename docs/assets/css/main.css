@@ -2564,6 +2564,7 @@
 				width: 100%;
 			}
 
+
 		.image.left {
 			float: left;
 			padding: 0 1.5em 1em 0;
@@ -2575,7 +2576,7 @@
 			padding: 0 0 1em 1.5em;
 			top: 0.25em;
 		}
-
+		
 		.image.fit {
 			display: block;
 			margin: 0 0 2em 0;
@@ -2628,7 +2629,7 @@
 
 	ul {
 		list-style: disc;
-		margin: 0 0 2em 0;
+		margin: 0 0 0 0; /* 2 em */
 		padding-left: 1em;
 	}
 
@@ -3785,6 +3786,35 @@
 
 		}
 
+
+/* https://codepen.io/fontrip/pen/MvvoYM 
+Header adjustments */
+.grid2x2 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 0px;
+  padding: 0px;
+  max-width: 100%;
+
+
+}
+.grid2x2 > div {
+  display: flex; 
+  /*flex-basis: calc(50% - 40px);*/
+  flex-basis: 50%; 
+  justify-content: center;
+  flex-direction: column;
+}
+.grid2x2 > div > div {
+  display: flex;
+  justify-content: right;
+  flex-direction: row;
+}
+
+
+		
+		
 /* Header */
 
 	#header {
@@ -3806,6 +3836,9 @@
 		}
 
 		#header .logo {
+		    display: flex;
+		    flex-direction: row;
+		    justify-content: left;
 			border-bottom: 0;
 			color: inherit;
 			font-family: "Roboto Slab", serif;
@@ -3813,9 +3846,47 @@
 		}
 
 		#header .icons {
-			text-align: right;
+		    display: flex;
+		    flex-direction: row;
+		    justify-content: right;
+		}
+		
+
+		#header .logoNG { /* For NANOGrav logo and NSF */
+		    display: flex;
+			border-bottom: 0;
+			color: inherit;
+			font-family: "Roboto Slab", serif;
+			font-size: 1.125em;
 		}
 
+		#header .logoNG a {
+		    text-decoration: none;
+		    border-bottom: 0;
+		}
+
+		#header .logoNG img { 
+		    max-width: 40%;
+		}
+
+		#header .logoNSF {
+		    display: flex;
+		    flex-direction: row;
+		    justify-content: right;
+		    align-items: flex-end; 
+		}
+
+		#header .logoNSF a {
+		    text-decoration: none;
+		    border-bottom: 0;
+		}
+		
+		#header .logoNSF img { 
+		    float: right;
+		    max-width: 25%;
+		}
+
+		
 		@media screen and (max-width: 1680px) {
 
 			#header {
