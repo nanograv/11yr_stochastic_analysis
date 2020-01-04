@@ -7,6 +7,8 @@ NANOGrav primarily uses Python for data analysis, and this repo makes use of a [
 For the paper most of the analyses were conducted using [PAL2][5] and [NX01][6].
 These packages have since been superceded by [enterprise][7], which is used here.
 
+The `bayesephem` directory contains a Jupyter notebook that reproduces all computations necessary to set up the BayesEphem model of solar-system-ephemeris uncertainties, which is used to make this analysis robust to ephemeris errors. BayesEphem is discussed in the NANOGrav paper "Ephemeris uncertainties vs. pulsar timing arrays".
+
 There are two ways perform the analysis: using [Docker][8] and using a local installation of software.
 
 ## using Docker
